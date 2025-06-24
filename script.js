@@ -32,10 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Navbar toggle
 const toggle = document.getElementById("menu-toggle");
-const navbar = document.getElementById("navbar");
+const navList = document.querySelector("nav ul");
 
 toggle.addEventListener("click", () => {
-  navbar.classList.toggle("active");
+  navList.classList.toggle("show");
+});
+
 });
 
 // Optional Scroll Animation (Exclude hero image)
