@@ -58,3 +58,21 @@ function handleScrollReveal() {
 
 window.addEventListener("scroll", handleScrollReveal);
 window.addEventListener("load", handleScrollReveal);
+document.addEventListener("DOMContentLoaded", function () {
+  alert("JS loaded! This means JavaScript is working.");
+
+  // Typed text test
+  const span = document.querySelector(".typed-text");
+  if (span) span.textContent = "It works!";
+
+  // Toggle test
+  const toggle = document.getElementById("menu-toggle");
+  const navList = document.querySelector("nav ul");
+
+  if (toggle && navList) {
+    toggle.addEventListener("click", () => {
+      navList.classList.toggle("show");
+    });
+  }
+});
+
