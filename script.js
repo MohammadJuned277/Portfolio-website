@@ -27,20 +27,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  if (typedTextSpan) setTimeout(type, 500);
-});
+  if (typedTextSpan) {
+    typedTextSpan.textContent = "";
+    setTimeout(type, 500);
+  }
 
-
-// Mobile Navbar Toggle
-document.addEventListener("DOMContentLoaded", function () {
+  // Mobile Navbar Toggle
   const toggle = document.getElementById("menu-toggle");
   const navList = document.querySelector("nav ul");
 
-  toggle.addEventListener("click", () => {
-    navList.classList.toggle("show");
-  });
+  if (toggle && navList) {
+    toggle.addEventListener("click", () => {
+      navList.classList.toggle("show");
+    });
+  }
 });
-
 
 // Optional: Scroll Reveal (if using .reveal elements) 
 const revealElements = document.querySelectorAll(".reveal");
@@ -58,21 +59,3 @@ function handleScrollReveal() {
 
 window.addEventListener("scroll", handleScrollReveal);
 window.addEventListener("load", handleScrollReveal);
-document.addEventListener("DOMContentLoaded", function () {
-  alert("JS loaded! This means JavaScript is working.");
-
-  // Typed text test
-  const span = document.querySelector(".typed-text");
-  if (span) span.textContent = "It works!";
-
-  // Toggle test
-  const toggle = document.getElementById("menu-toggle");
-  const navList = document.querySelector("nav ul");
-
-  if (toggle && navList) {
-    toggle.addEventListener("click", () => {
-      navList.classList.toggle("show");
-    });
-  }
-});
-
