@@ -94,26 +94,30 @@ nav ul li a:hover {
 /* === 4. HERO SECTION === */
 #hero {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  height: 300px;
-  background: linear-gradient(135deg, #00d1b2, #007bff);
-  color: white;
-  text-align: center;
-  padding: 2rem;
-}
-
-.hero-container {
-  display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  text-align: center;
+  height: auto;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #00d1b2, #007bff);
+  color: white;
+  text-align: left;
 }
 
-.hero-text h2 {
+.hero-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  width: 100%;
+  gap: 2rem;
+}
+
+.hero-text-block {
+  flex: 1 1 500px;
+}
+
+.hero-text-block h2 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
 }
@@ -135,7 +139,6 @@ nav ul li a:hover {
   border-color: white;
 }
 
-/* Resume Button */
 .resume-button {
   text-align: center;
   margin-top: 2rem;
@@ -174,34 +177,8 @@ nav ul li a:hover {
   transform: translateX(3px);
 }
 
-/* Hero Image */
-#hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #00d1b2, #007bff);
-  color: white;
-  text-align: left;
-}
-
-.hero-flex {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  width: 100%;
-  gap: 2rem;
-}
-
-.hero-text-block {
-  flex: 1 1 500px;
-}
-
 .hero-photo {
- padding: 6px;
+  padding: 6px;
   background: linear-gradient(to bottom right, #1abc9c, #3498db);
   border-radius: 12px;
   display: inline-block;
@@ -215,8 +192,6 @@ nav ul li a:hover {
   object-fit: cover;
   display: block;
 }
-
-
 
 /* === 5. SECTION DEFAULTS === */
 section {
@@ -233,7 +208,7 @@ section h2 {
 }
 
 section h2::after {
-  content: "";
+  content: '';
   display: block;
   width: 60px;
   height: 3px;
@@ -387,8 +362,8 @@ section h2::after {
 .code-btn {
   display: inline-block;
   margin-top: 0.4rem;
-  background: #fffdfd;
-  color: #ffffff;
+  background: #007acc;
+  color: white;
   padding: 0.4rem 1rem;
   border-radius: 20px;
   font-weight: 500;
@@ -397,9 +372,8 @@ section h2::after {
 }
 
 .code-btn:hover {
-  background: #23272b;
+  background: #005c99;
 }
-
 
 .project-card a:hover {
   text-decoration: underline;
@@ -462,3 +436,59 @@ footer {
   margin-top: 4rem;
 }
 
+/* === 13. CERTIFICATIONS SECTION === */
+#certifications {
+  background: #f8fafd;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.cert-card {
+  background: white;
+  padding: 1.5rem;
+  border-left: 5px solid #16a085;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cert-card h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.cert-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.cert-card .cert-btn {
+  display: inline-block;
+  margin-top: 0.6rem;
+  background: #16a085;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.cert-card .cert-btn:hover {
+  background: #12876f;
+}
