@@ -465,7 +465,7 @@ footer {
 }
 
 .cert-card::before {
-  content: \"📜\";
+  content: "📜";
   position: absolute;
   font-size: 4rem;
   color: rgba(0,0,0,0.05);
