@@ -1,23 +1,22 @@
 // ============================
-// Typed Text Animation
+// Typed‑Text Animation
 // ============================
 document.addEventListener("DOMContentLoaded", () => {
   const typed = document.querySelector(".typed-text");
   const words = ["Mohammad Juned Shaik", "a Tech Enthusiast"];
-  let wordIndex = 0, charIndex = 0;
-
+  let word = 0, char = 0;
   function type() {
-    if (charIndex < words[wordIndex].length) {
-      typed.textContent += words[wordIndex][charIndex++];
+    if (char < words[word].length) {
+      typed.textContent += words[word][char++];
       setTimeout(type, 100);
     } else setTimeout(erase, 2000);
   }
   function erase() {
-    if (charIndex > 0) {
-      typed.textContent = words[wordIndex].substring(0, --charIndex);
+    if (char > 0) {
+      typed.textContent = words[word].substring(0, --char);
       setTimeout(erase, 50);
     } else {
-      wordIndex = (wordIndex + 1) % words.length;
+      word = (word + 1) % words.length;
       setTimeout(type, 500);
     }
   }
@@ -25,11 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
   type();
 
   // ============================
-  // Mobile Nav Toggle
+  // Mobile Navbar Toggle
   // ============================
   const toggle = document.getElementById("menu-toggle");
-  const navList = document.querySelector("nav ul");
-  toggle.addEventListener("click", () => navList.classList.toggle("show"));
+  const nav = document.querySelector("nav ul");
+  toggle.addEventListener("click", () => nav.classList.toggle("show"));
 
   // ============================
   // Smooth Anchor Scroll
@@ -46,19 +45,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ============================
-// Scroll Reveal
+// Scroll‑Reveal Animation
 // ============================
 const reveals = document.querySelectorAll(".reveal");
-function revealOnScroll() {
+function reveal() {
   reveals.forEach(el => {
     if (el.getBoundingClientRect().top < window.innerHeight - 100) {
       el.classList.add("active");
     }
   });
 }
-// run once on load for hero (mobile) then on scroll
+// ensure hero animates on first load (mobile)
 window.addEventListener("load", () => {
   document.querySelectorAll("#hero .reveal").forEach(el => el.classList.add("active"));
-  revealOnScroll();
+  reveal();
 });
-window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("scroll", reveal);
