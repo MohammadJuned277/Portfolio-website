@@ -42,9 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const navList = document.querySelector("nav ul");
 
   if (toggle && navList) {
-    toggle.addEventListener("click", () => {
-      navList.classList.toggle("show");
-    });
+    toggle.addEventListener("click", () => navList.classList.toggle("show"));
   }
 
   // ============================
@@ -54,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelectorAll('a[href^="#"]')
     .forEach((link) =>
       link.addEventListener("click", (e) => {
-        // Ignore empty hashes or links with just '#'
         const targetId = link.getAttribute("href");
         if (targetId.length > 1) {
           e.preventDefault();
@@ -83,5 +80,13 @@ function handleScrollReveal() {
   });
 }
 
+// Fire once on load (important for hero on mobile)
+window.addEventListener("load", () => {
+  // explicit activation for hero elements to guarantee entry animation
+  document
+    .querySelectorAll("#hero .reveal")
+    .forEach((el) => el.classList.add("active"));
+
+  handleScrollReveal();
+});
 window.addEventListener("scroll", handleScrollReveal);
-window.addEventListener("load", handleScrollReveal);
