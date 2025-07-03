@@ -357,6 +357,7 @@ section h2::after {
 .project-card a:hover {
   text-decoration: underline;
 }
+/* === CERTIFICATIONS SECTION FIX === */
 #certifications {
   background: #eef2f5;
   padding: 4rem 1rem;
@@ -365,17 +366,18 @@ section h2::after {
 
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
-  margin: auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .cert-card {
-  background: linear-gradient(145deg, #ffffff, #dce3ea);
-  padding: 2rem;
+  background: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   position: relative;
   text-align: left;
   transition: transform 0.3s ease;
@@ -389,15 +391,16 @@ section h2::after {
   content: "📜";
   position: absolute;
   font-size: 4rem;
-  color: rgba(0,0,0,0.05);
+  color: rgba(0, 0, 0, 0.05);
   right: 15px;
   top: 10px;
 }
 
 .cert-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #00796b;
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .cert-card p {
@@ -406,20 +409,22 @@ section h2::after {
   margin-bottom: 1rem;
 }
 
-.cert-card .cert-btn {
+.cert-btn {
   background: #007acc;
-  color: white;
+  color: #fff;
   padding: 0.5rem 1.2rem;
   font-size: 0.9rem;
   border-radius: 30px;
   text-decoration: none;
   display: inline-block;
-  transition: background 0.3s;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
-.cert-card .cert-btn:hover {
+.cert-btn:hover {
   background: #005c99;
 }
+
 
 
 /* === 10. SKILLS SECTION === */
