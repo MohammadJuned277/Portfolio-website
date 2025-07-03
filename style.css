@@ -372,16 +372,88 @@ section h2::after {
   background: #005c99;
 }
 
-/* === 10. SKILLS SECTION === */
+#certifications {
+  background: #eef2f5;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.certifications-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.cert-card {
+  background: linear-gradient(145deg, #ffffff, #dce3ea);
+  padding: 2rem;
+  width: 280px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  text-align: left;
+}
+
+.cert-card::before {
+  content: "📜";
+  position: absolute;
+  font-size: 4rem;
+  color: rgba(0, 0, 0, 0.05);
+  right: 15px;
+  top: 10px;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cert-card h3 {
+  color: #00796b;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cert-card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.cert-card .cert-btn {
+  display: inline-block;
+  background: #007acc;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.cert-card .cert-btn:hover {
+  background: #005c99;
+}
+
+
 #skills {
   background: linear-gradient(to right, #e0f7fa, #f1f8ff);
   text-align: center;
+  padding: 4rem 1rem;
 }
 
 .skills-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  max-width: 1000px;
+  margin: auto;
 }
 
 .skills-grid span {
@@ -391,7 +463,9 @@ section h2::after {
   padding: 0.6rem 1rem;
   border-radius: 25px;
   display: inline-block;
+  font-size: 1rem;
 }
+
 
 /* === 11. CONTACT SECTION === */
 #contact {
