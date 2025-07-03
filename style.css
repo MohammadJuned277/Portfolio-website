@@ -98,7 +98,7 @@ nav ul li a:hover {
   justify-content: center;
   height: auto;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #00d1b2, #007bff);
+  background: linear-gradient(135deg, #1f2121, #8f7e40);
   color: white;
   text-align: left;
 }
@@ -179,7 +179,7 @@ nav ul li a:hover {
 
 .hero-photo {
   padding: 6px;
-  background: linear-gradient(to bottom right, #1abc9c, #3498db);
+  background: linear-gradient(135deg, #1f2121, #8f7e40);
   border-radius: 12px;
   display: inline-block;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
