@@ -502,3 +502,23 @@ footer {
   padding: 1.5rem 0;
   margin-top: 4rem;
 }
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero-photo img {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: heroIn 1s ease forwards 0.5s;
+}
+@keyframes heroIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
