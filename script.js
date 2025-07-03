@@ -1,92 +1,64 @@
 // ============================
 // Typed Text Animation
 // ============================
-document.addEventListener("DOMContentLoaded", function () {
-  const typedTextSpan = document.querySelector(".typed-text");
-  const textArray = ["Mohammad Juned Shaik", "a Tech Enthusiast"];
-  let textArrayIndex = 0;
-  let charIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  const typed = document.querySelector(".typed-text");
+  const words = ["Mohammad Juned Shaik", "a Tech Enthusiast"];
+  let wordIndex = 0, charIndex = 0;
 
   function type() {
-    if (charIndex < textArray[textArrayIndex].length) {
-      typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-      charIndex++;
+    if (charIndex < words[wordIndex].length) {
+      typed.textContent += words[wordIndex][charIndex++];
       setTimeout(type, 100);
-    } else {
-      setTimeout(erase, 2000);
-    }
+    } else setTimeout(erase, 2000);
   }
-
   function erase() {
     if (charIndex > 0) {
-      typedTextSpan.textContent =
-        textArray[textArrayIndex].substring(0, charIndex - 1);
-      charIndex--;
+      typed.textContent = words[wordIndex].substring(0, --charIndex);
       setTimeout(erase, 50);
     } else {
-      textArrayIndex++;
-      if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+      wordIndex = (wordIndex + 1) % words.length;
       setTimeout(type, 500);
     }
   }
-
-  if (typedTextSpan) {
-    typedTextSpan.textContent = "";
-    setTimeout(type, 500);
-  }
+  typed.textContent = "";
+  type();
 
   // ============================
-  // Mobile Navbar Toggle
+  // Mobile Nav Toggle
   // ============================
   const toggle = document.getElementById("menu-toggle");
   const navList = document.querySelector("nav ul");
-
-  if (toggle && navList) {
-    toggle.addEventListener("click", () => navList.classList.toggle("show"));
-  }
+  toggle.addEventListener("click", () => navList.classList.toggle("show"));
 
   // ============================
-  // Smooth Scroll for Anchor Links
+  // Smooth Anchor Scroll
   // ============================
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach((link) =>
-      link.addEventListener("click", (e) => {
-        const targetId = link.getAttribute("href");
-        if (targetId.length > 1) {
-          e.preventDefault();
-          const targetEl = document.querySelector(targetId);
-          if (targetEl) {
-            targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }
-      })
-    );
+  document.querySelectorAll('a[href^="#"]').forEach(link =>
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href");
+      if (id.length > 1) {
+        e.preventDefault();
+        document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+      }
+    })
+  );
 });
 
 // ============================
-// Scroll‑Reveal Animation
+// Scroll Reveal
 // ============================
-const revealElements = document.querySelectorAll(".reveal");
-
-function handleScrollReveal() {
-  revealElements.forEach((el) => {
-    if (!el.classList.contains("no-animation")) {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        el.classList.add("active");
-      }
+const reveals = document.querySelectorAll(".reveal");
+function revealOnScroll() {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("active");
     }
   });
 }
-
-// Fire once on load (important for hero on mobile)
+// run once on load for hero (mobile) then on scroll
 window.addEventListener("load", () => {
-  // explicit activation for hero elements to guarantee entry animation
-  document
-    .querySelectorAll("#hero .reveal")
-    .forEach((el) => el.classList.add("active"));
-
-  handleScrollReveal();
+  document.querySelectorAll("#hero .reveal").forEach(el => el.classList.add("active"));
+  revealOnScroll();
 });
-window.addEventListener("scroll", handleScrollReveal);
+window.addEventListener("scroll", revealOnScroll);
