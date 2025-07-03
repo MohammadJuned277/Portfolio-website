@@ -1,4 +1,6 @@
-// Typed Text Animation 
+// ============================
+// Typed Text Animation
+// ============================
 document.addEventListener("DOMContentLoaded", function () {
   const typedTextSpan = document.querySelector(".typed-text");
   const textArray = ["Mohammad Juned Shaik", "a Tech Enthusiast"];
@@ -17,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function erase() {
     if (charIndex > 0) {
-      typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+      typedTextSpan.textContent =
+        textArray[textArrayIndex].substring(0, charIndex - 1);
       charIndex--;
       setTimeout(erase, 50);
     } else {
@@ -32,7 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(type, 500);
   }
 
+  // ============================
   // Mobile Navbar Toggle
+  // ============================
   const toggle = document.getElementById("menu-toggle");
   const navList = document.querySelector("nav ul");
 
@@ -41,9 +46,30 @@ document.addEventListener("DOMContentLoaded", function () {
       navList.classList.toggle("show");
     });
   }
+
+  // ============================
+  // Smooth Scroll for Anchor Links
+  // ============================
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) =>
+      link.addEventListener("click", (e) => {
+        // Ignore empty hashes or links with just '#'
+        const targetId = link.getAttribute("href");
+        if (targetId.length > 1) {
+          e.preventDefault();
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      })
+    );
 });
 
-// Optional: Scroll Reveal (if using .reveal elements) 
+// ============================
+// Scroll‑Reveal Animation
+// ============================
 const revealElements = document.querySelectorAll(".reveal");
 
 function handleScrollReveal() {
