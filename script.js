@@ -1,66 +1,95 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const typed = document.querySelector(".typed-text");
-  const words = ["Mohammad Juned Shaik", "a Tech Enthusiast"];
-  let word = 0, char = 0;
+    const typed = document.querySelector(".typed-text");
+    const rolesContainer = document.getElementById("roles");
 
-  function type() {
-    if (char < words[word].length) {
-      typed.textContent += words[word][char++];
-      setTimeout(type, 100);
-    } else {
-      setTimeout(erase, 2000);
+    if (typed && rolesContainer) {
+        typed.textContent = "Mohammad Juned Shaik";
+
+        rolesContainer.innerHTML = `
+            <div class="subtitle-text">
+                <span class="word">Python Full Stack Developer</span>
+                <span class="word">AI & ML Engineer</span>
+            </div>
+        `;
+
+        const words = document.querySelectorAll("#roles .word");
+        words.forEach((word, index) => {
+            word.classList.add("subtitle-animate");
+            word.style.animationDelay = `${index * 0.5}s`;
+        });
     }
-  }
 
-  function erase() {
-    if (char > 0) {
-      typed.textContent = words[word].substring(0, --char);
-      setTimeout(erase, 50);
-    } else {
-      word = (word + 1) % words.length;
-      setTimeout(type, 500);
+    // Toggle mobile nav
+    const toggle = document.getElementById("menu-toggle");
+    const navList = document.querySelector("nav ul");
+    if (toggle && navList) {
+        toggle.addEventListener("click", () => {
+            navList.classList.toggle("show");
+        });
     }
-  }
 
-  if (typed) {
-    typed.textContent = "";
-    setTimeout(type, 500);
-  }
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(link =>
+        link.addEventListener("click", e => {
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        })
+    );
 
-  // Navbar toggle
-  const toggle = document.getElementById("menu-toggle");
-  const navList = document.querySelector("nav ul");
-  if (toggle && navList) {
-    toggle.addEventListener("click", () => {
-      navList.classList.toggle("show");
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+
+    function handleReveal() {
+        revealElements.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                el.classList.add("active");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", handleReveal);
+    window.addEventListener("load", () => {
+        handleReveal();
+        document.querySelectorAll("#hero .reveal").forEach(el => el.classList.add("active"));
     });
-  }
 
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(link =>
-    link.addEventListener("click", e => {
-      const target = document.querySelector(link.getAttribute("href"));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    })
-  );
+    // Tagline typing animation below photo
+    const taglineElement = document.getElementById("animated-tagline");
+    const taglineWords = [
+        "Tech enthusiast ",
+        "AI Explorer ",
+        "Problem Solver "
+    ];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-  // Scroll reveal
-  const revealElements = document.querySelectorAll(".reveal");
+    function typeTagline() {
+        const currentWord = taglineWords[wordIndex];
+        if (!taglineElement) return;
 
-  function handleReveal() {
-    revealElements.forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-        el.classList.add("active");
-      }
-    });
-  }
+        if (isDeleting) {
+            taglineElement.textContent = currentWord.substring(0, charIndex--);
+        } else {
+            taglineElement.textContent = currentWord.substring(0, charIndex++);
+        }
 
-  window.addEventListener("scroll", handleReveal);
-  window.addEventListener("load", () => {
-    handleReveal();
-    document.querySelectorAll("#hero .reveal").forEach(el => el.classList.add("active"));
-  });
+        let delay = isDeleting ? 80 : 130;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            delay = 1500;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % taglineWords.length;
+            delay = 500;
+        }
+
+        setTimeout(typeTagline, delay);
+    }
+
+    typeTagline();
 });
