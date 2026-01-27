@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
         rolesContainer.innerHTML = `
             <div class="subtitle-text">
                 <span class="word">SYSTEMS ENGINEER</span>
-                <span class="word">At EDGEVERVE SYSTEMS LIMITED</span>
+                <span class="word">at</span>
+                <span class="word">EDGEVERVE SYSTEMS LIMITED</span>
             </div>
         `;
 
@@ -93,5 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     typeTagline();
 });
+
 
 
